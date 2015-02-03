@@ -1,1 +1,52 @@
-<p>This is the projects.view view.</p>
+<div class="panel-wrapper">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel-title">
+        <div class="row">
+          <div class="col-xs-8 col-md-8"><h4><a ui-sref="projects.view({id:id})">{{viewTitle}}</a> :
+            <span class="badge">{{openPosition}}</span> Open Positions</h4></div>
+            <div class="col-xs-2 col-md-2">
+              <a ui-sref="projects.edit({id:id})">
+                <span class="glyphicon glyphicon-edit"></span>
+                Edit
+              </a>
+            </div>
+            <div class="col-xs-2 col-md-2">
+              <a ui-sref="organizations.delete({id:id})">
+                <span class="glyphicon glyphicon-remove"></span>
+                Delete
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-stage">
+          <div class="row">
+            <div class="col-xs-8 col-md-6">
+              <div class="panel-wrapper">
+                <div class="panel-title"><editable-label value="subTitle1" ></editable-label></div>
+                <div class="panel-stage height300"><div class="red-days-large">{{redDays}}</div></div>
+              </div>
+            </div>
+            <div class="col-xs-8 col-md-6">
+              <div class="panel-wrapper">
+                <div class="panel-title"><editable-label value="subTitle2" ></editable-label></div>
+                <div class="panel-stage height300" >
+                  <canvas id="doughnut" class="chart chart-doughnut" data="data" labels="labels" legend="false"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-title"><editable-label value="people" ></editable-label></div>
+                <div class="panel-stage"><editable-label value="peopleTitle" ></editable-label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-notes"><editable-label value="notes" ></editable-label></div>
+      </div>
+    </div>
+</div>

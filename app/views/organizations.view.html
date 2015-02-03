@@ -3,15 +3,15 @@
     <div class="panel-wrapper">
       <div class="panel-title">
         <div class="row">
-          <div class="col-xs-8 col-md-8"><h4>{{viewTitle}}</h4></div>
+          <div class="col-xs-8 col-md-8"><h4>{{organization.name}}</h4></div>
           <div class="col-xs-2 col-md-2">
-            <a ui-sref="organizations.edit({id:id})">
+            <a ui-sref="organizations.edit({id:organization.id})">
               <span class="glyphicon glyphicon-edit"></span>
               Edit
             </a>
           </div>
           <div class="col-xs-2 col-md-2">
-            <a ui-sref="organizations.delete({id:id})">
+            <a ui-sref="organizations.delete({id:organization.id})">
               <span class="glyphicon glyphicon-remove"></span>
               Delete
             </a>
@@ -22,9 +22,9 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="panel-wrapper">
-              <div class="panel-title"><editable-label value="subTitle" ></editable-label></div>
+              <div class="panel-title">Billable Vs Bench</div>
               <div class="panel-stage">
-                <canvas id="tables" class="chart chart-line" data="data" labels="labels" colours="colours" legend="true"></canvas>
+                <canvas id="tables" class="chart chart-line" data="organization.data" labels="organization.labels" colours="organization.colours" legend="true"></canvas>
               </div>
             </div>
           </div>
@@ -32,8 +32,8 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="panel-wrapper">
-              <div class="panel-title"><editable-label value="projects" ></editable-label></div>
-              <div class="panel-stage"><editable-label value="projectTitles" ></editable-label></div>
+              <div class="panel-title">Projects</div>
+              <div class="panel-stage">{{getProjectsStr(organization.id)}}</div>
             </div>
           </div>
         </div>
