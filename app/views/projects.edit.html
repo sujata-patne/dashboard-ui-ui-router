@@ -1,1 +1,46 @@
-<p>This is the projects.edit view.</p>
+<div class="panel-wrapper">
+  <form method="post" id="projectsForm">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel-title">
+          <div class="row">
+            <div class="col-xs-12">
+              <input type="text" name="txtTitle" placeholder="Enter Title" ng-model="title" value="title" required="true">
+            </div>
+          </div>
+        </div>
+        <div class="panel-stage">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-title"><editable-label ng-model="subTitle" value="subTitle" ></editable-label></div>
+                <div class="panel-stage">TBD</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-title"><editable-label ng-model="projects" value="projects" ></editable-label></div>
+                <div class="panel-stage">
+                  <ul ng-repeat="projectTitle in projectTitlesArr">
+                    <li><input type="text"  name="txtProjectTitle" placeholder="Enter Project Title" ng-model="projectTitle" value="projectTitle" required="true"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-stage">
+                  <button type="submit" ng-disabled="projectsForm.$invalid" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

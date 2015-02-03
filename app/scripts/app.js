@@ -42,17 +42,17 @@ angular
       .state('organizations.view',{
         templateUrl:'views/organizations.view.html',
         controller:'OrganizationsviewCtrl',
-        url:'/view/id/:id'
+        url:'/view/:id'
       })
       .state('organizations.edit',{
         templateUrl:'views/organizations.edit.html',
         controller:'OrganizationseditCtrl',
-        url:'/edit/id/:id'
+        url:'/edit/:id'
       })
       .state("organizations.delete",{
         templateUrl:"views/organizations.delete.html",
         controller:"OrganizationsdeleteCtrl",
-        url:"/delete/id/:id"
+        url:"/delete/:id"
       })
       .state("projects",{
         templateUrl:"views/projects.html",
@@ -67,17 +67,17 @@ angular
       .state("projects.edit",{
         templateUrl:"views/projects.edit.html",
         controller:"ProjectseditCtrl",
-        url:"/edit/id/:id"
+        url:"/edit/:id"
       })
       .state("projects.view",{
         templateUrl:"views/projects.view.html",
         controller:"ProjectsviewCtrl",
-        url:"/view/id/:id"
+        url:"/view/:id"
       })
       .state("projects.delete",{
         templateUrl:"views/projects.delete.html",
         controller:"ProjectsdeleteCtrl",
-        url:"/delete/id/:id"
+        url:"/delete/:id"
       })
       .state("employees",{
         templateUrl:"views/employees.html",
@@ -92,17 +92,17 @@ angular
       .state("employees.view",{
         templateUrl:"views/employees.view.html",
         controller:"EmployeesviewCtrl",
-        url:"/view/id/:id"
+        url:"/view/:id"
       })
       .state("employees.edit",{
         templateUrl:"views/employees.edit.html",
         controller:"EmployeeseditCtrl",
-        url:"/edit/id/:id"
+        url:"/edit/:id"
       })
       .state("employees.delete",{
         templateUrl:"views/employees.delete.html",
         controller:"EmployeesdeleteCtrl",
-        url:"/delete/id/:id"
+        url:"/delete/:id"
       })
   })
 

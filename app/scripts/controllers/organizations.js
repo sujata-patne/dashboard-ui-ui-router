@@ -9,7 +9,8 @@
  */
 angular.module('dashboardApp')
   .controller('OrganizationsCtrl', function ($scope) {
-    $scope.chartTitle = [
+
+    /*$scope.chartTitle = [
       [{"1":"Synerzip"},{"2":"Starks"},{"3":"Lanisters"}],
       [{"4":"Targareyen"},{"5":"Baratheon"},{"6":"Tryrell"}]
     ];
@@ -18,8 +19,8 @@ angular.module('dashboardApp')
     $scope.projects = 'Projects';
 
     $scope.projectsList = [
-      ['Google, PDX, Halliburton, ...','Halliburton,Loven, ...','LRS, Zimbra, ...'],
-      ['CMS, Studer,...','PDX','CloudOn, Prezi,..']
+      ['Google, PDX, Halliburton','Halliburton,Loven','LRS, Zimbra'],
+      ['CMS, Studer','PDX','CloudOn, Prezi']
     ];
 
     $scope.labels = ["8.00 AM", "12.00 PM", "4.00 PM", "8.00 PM", "12.00 AM", "4.00 AM"];
@@ -29,7 +30,5 @@ angular.module('dashboardApp')
       [28, 48, 0, 19, 35, 27],
       [45, 59, 0, 31, 65, 48],
       [58, 48, 0, 92, 25, 35]
-    ];
-
-
+    ];*/
   });

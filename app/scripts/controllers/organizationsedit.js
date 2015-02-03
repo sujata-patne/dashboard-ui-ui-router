@@ -8,10 +8,11 @@
  * Controller of the dashboardApp
  */
 angular.module('dashboardApp')
-  .controller('OrganizationseditCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('OrganizationseditCtrl',['$scope', '$stateParams','OrganizationsService', function ($scope, $stateParams, OrganizationsService) {
+
+    $scope.organization = OrganizationsService.getOrganization($stateParams.id);
+
+    $scope.getProjectsArr = function(id){
+      return OrganizationsService.getProjectsArr(id);
+    }
+  }]);

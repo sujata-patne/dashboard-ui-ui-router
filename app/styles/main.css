@@ -132,3 +132,17 @@ body {
   background: white;
 
 }
+.height300{
+  height: 300px;
+}
+
+.panel-wrapper .red-days-large{
+  font-size:50pt;
+  color:red;
+  text-align: center;
+  padding:16px;
+
+}
+li{
+  padding: 2px;
+}

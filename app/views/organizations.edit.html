@@ -1,1 +1,44 @@
-<p>This is the organizations.edit view.</p>
+<div class="panel-wrapper">
+  <form method="post" id="organizationsForm">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel-title">
+          <div class="row">
+            <div class="col-xs-12">
+              <input type="text" name="txtTitle" placeholder="Enter Title" ng-model="organization.name" value="organization.name" required="true">
+            </div>
+          </div>
+        </div>
+        <div class="panel-stage">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-title">Billable Vs Bench</div>
+                <div class="panel-stage">TBD</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-title">Projects</div>
+                <div class="panel-stage">
+                  <ul><li ng-repeat="projectTitle in getProjectsArr(organization.id)"><input type="text" placeholder="Enter Project Title" ng-model="projectTitle" value="projectTitle" required="true"></li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-stage">
+                  <button type="submit" ng-disabled="organizationsForm.$invalid" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
