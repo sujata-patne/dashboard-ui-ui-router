@@ -5,7 +5,7 @@
         <div class="panel-title">
           <div class="row">
             <div class="col-xs-12">
-              <input type="text" name="txtTitle" placeholder="Enter Title" ng-model="organization.name" value="organization.name" required="true">
+              <input type="text" ng-model="organization.name"  required="true">
             </div>
           </div>
         </div>
@@ -21,9 +21,42 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="panel-wrapper">
-                <div class="panel-title">Projects</div>
+                <div class="panel-title">
+                  <div class="row">
+                    <div class="col-xs-10">Projects</div>
+                    <div class="col-xs-2">
+                      <button ng-click="addProject()">Add Projects</button>
+                    </div>
+                  </div>
+                </div>
                 <div class="panel-stage">
-                  <ul><li ng-repeat="projectTitle in getProjectsArr(organization.id)"><input type="text" placeholder="Enter Project Title" ng-model="projectTitle" value="projectTitle" required="true"></li></ul>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <ul><li ng-repeat="projectTitle in organization.projects">
+                        <input type="text" ng-model="projectTitle.id" required="true" >
+                          <input type="text" ng-model="projectTitle.name" required="true" >
+                          <span><button class="btn btn-danger btn-xs" ng-click="deleteProject(projectTitle.id)">X</button></span>
+                        </li>
+                        <li ng-repeat="new in newProject.name track by $index">
+
+                          <input type='text' ng-model='newProject.name[$index]' >
+                          <span><button class="btn btn-danger btn-xs" ng-click="deleteProjectField($index)">X</button></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="panel-wrapper">
+                <div class="panel-title">Owner</div>
+                <div class="panel-stage">
+                  <ul><li ng-repeat="owner in organization.owners">
+                    <input type="text" ng-model="owner.name" required="true" >
+                  </li></ul>
                 </div>
               </div>
             </div>
@@ -32,7 +65,7 @@
             <div class="col-xs-12">
               <div class="panel-wrapper">
                 <div class="panel-stage">
-                  <button type="submit" ng-disabled="organizationsForm.$invalid" class="btn btn-primary">Submit</button>
+                  <button type="submit" ng-disabled="organizationsForm.$invalid" class="btn btn-primary  text-left" ng-click="update()">Submit</button>
                 </div>
               </div>
             </div>
