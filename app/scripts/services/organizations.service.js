@@ -9,7 +9,10 @@ angular.module('dashboardApp')
         {
           "id":1,
           "name":"Synerzip",
-          "owner":{"id":1,"name":"Vinayak"},
+          "owners":[
+            {"id":1,"name":"Vinayak"},
+            {"id":2,"name":"Hemant"}
+          ],
           "projects":[
             {"id":1,"name":"Project1"},
             {"id":2,"name":"Project2"},
@@ -32,7 +35,7 @@ angular.module('dashboardApp')
         {
           "id":2,
           "name":"BU1",
-          "owner":{"id":1,"name":"Ashutosh"},
+          "owners":{"id":1,"name":"Ashutosh"},
           "projects":[
             {"id":1,"name":"Project1"},
             {"id":2,"name":"Project2"}
@@ -52,7 +55,7 @@ angular.module('dashboardApp')
         {
           "id":3,
           "name":"BU2",
-          "owner":{"id":1,"name":"Vrinda"},
+          "owners":{"id":1,"name":"Vrinda"},
           "projects":[
             {"id":3,"name":"Project3"}
           ],
@@ -71,7 +74,7 @@ angular.module('dashboardApp')
         {
           "id":4,
           "name":"BU5",
-          "owner":{"id":1,"name":"Vinayak"},
+          "owners":{"id":1,"name":"Vinayak"},
           "projects":[
             {"id":4,"name":"Project4"}
           ],
@@ -90,7 +93,7 @@ angular.module('dashboardApp')
         {
           "id":5,
           "name":"BU3",
-          "owner":{"id":1,"name":"Ashutosh"},
+          "owners":{"id":1,"name":"Ashutosh"},
           "projects":[
             {"id":5,"name":"Project5"}
           ],
@@ -109,7 +112,7 @@ angular.module('dashboardApp')
         {
           "id":6,
           "name":"BU4",
-          "owner":{"id":1,"name":"Vrinda"},
+          "owners":{"id":1,"name":"Vrinda"},
           "projects":[
             {"id":6,"name":"Project6"}
           ],
@@ -146,7 +149,6 @@ angular.module('dashboardApp')
       var data = {};
       angular.forEach(this.organizations, function(items) {
         if(items.id == id ){
-          //console.log(items);
           data = items;
         }
       });
@@ -154,22 +156,16 @@ angular.module('dashboardApp')
     };
 
     service.getProjectsStr = function(id){
+      var projects = this.getProjectsArr(id);
       var projectsList = '';
-      angular.forEach(this.organizations, function(items) {
-        if(items.id == id ){
-          angular.forEach(items, function(item, key) {
-            if(key == 'projects'){
-              angular.forEach(item, function(project) {
-                projectsList += project.name + ", ";
-              });
-            }
-          });
-        }
+      angular.forEach(projects, function(project) {
+        projectsList += project + ", ";
       });
       var pos = projectsList.lastIndexOf(",");
       projectsList = projectsList.substr(0, pos);
       return projectsList;
     }
+
     service.getProjectsArr = function(id){
       var projectsList = [];
       angular.forEach(this.organizations, function(items) {
@@ -183,9 +179,20 @@ angular.module('dashboardApp')
           });
         }
       });
-
       return projectsList;
     }
 
+    service.update=function(newOrganization){
+      var id = newOrganization.id;
+      angular.forEach(this.organizations, function(items) {
+        if(items.id == id){
+          items.name = newOrganization.name;
+          items.projects = newOrganization.projects;
+          items.owners = newOrganization.owners;
+        }
+      });
+    };
+
+    //return service
     return service;
   }]);
