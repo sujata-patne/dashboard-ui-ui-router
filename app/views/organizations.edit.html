@@ -38,7 +38,6 @@
                           <span><button class="btn btn-danger btn-xs" ng-click="deleteProject(projectTitle.id)">X</button></span>
                         </li>
                         <li ng-repeat="new in newProject.name track by $index">
-
                           <input type='text' ng-model='newProject.name[$index]' >
                           <span><button class="btn btn-danger btn-xs" ng-click="deleteProjectField($index)">X</button></span>
                         </li>
