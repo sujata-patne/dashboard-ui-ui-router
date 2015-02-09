@@ -8,24 +8,31 @@
  * Service in the dashboardApp.
  */
 angular.module('dashboardApp')
-  .service('projects.service', [function () {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+  .service('projects.service', ['$http', function ($http) {
     var service = {};
-    service.projects = [];
-    service.add = function (projectsData) {
-      this.projects.push(projectsData);
-    };
-    service.delete = function (projectsData) {
-      var index = this.projects.indexOf(projectsData);
-      this.projects.splice(index, 1);
-    };
-    service.clear = function () {
-      for (var index = this.projects.length - 1; index >= 0; index--) {
-        if (this.projects[index].completed === true) {
-          this.projects.splice(index, 1);
-        }
-      }
-    };
+    service.baseRestUrl = 'http://localhost:8888';
+
+    service.getProjectList = function(success){
+      $http.get(service.baseRestUrl+'/api/projects/').success(function (items) {
+        success(items);
+      });
+    }
+    service.add = function (newProject, success) {
+      $http.post(service.baseRestUrl+'/api/projects/', newProject).success(function(items){
+        success(items);
+      });
+    }
+    service.delete = function (project, success) {
+      $http.delete(service.baseRestUrl+'/api/projects/' + project._id, project).success(function (result) {
+        success(result);
+      });
+    }
+    service.update = function (newProject, success) {
+      $http.put(service.baseRestUrl+'/api/projects/' + newProject._id, newProject).success(function(items){
+        success(items);
+      });
+    }
+
     return service;
   }]);
 

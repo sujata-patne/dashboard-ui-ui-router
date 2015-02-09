@@ -9,12 +9,13 @@
  */
 angular.module('dashboardApp')
   .controller('OrganizationsviewCtrl', ['$scope', '$stateParams','OrganizationsService', function ($scope, $stateParams, OrganizationsService) {
+    $scope.chartData = OrganizationsService.chartData;
 
-    //$scope.organizationsList = OrganizationsService.organizations;
+    OrganizationsService.getOrganization($stateParams.id, function (organization) {
+      $scope.organization = organization;
+    });
 
-    $scope.organization = OrganizationsService.getOrganization($stateParams.id);
-
-    $scope.getProjectsStr = function(id){
-      return OrganizationsService.getProjectsStr(id);
+    $scope.getObjectDataStr = function(objects){
+      return OrganizationsService.getObjectDataStr(objects);
     }
   }]);

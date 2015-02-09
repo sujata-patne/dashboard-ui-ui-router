@@ -2,7 +2,9 @@
   "name": "dashboard",
   "version": "0.0.0",
   "dependencies": {
-    "chart.js": "^1.0.1"
+    "chart.js": "^1.0.1",
+    "mongoose": "^3.8.22",
+    "mongoose-auto-increment": "^3.2.0"
   },
   "devDependencies": {
     "grunt": "^0.4.1",

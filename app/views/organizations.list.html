@@ -15,7 +15,7 @@
   <div ng-repeat="item in organizationsList" class="col-md-4">
     <div class="panel-wrapper">
       <div class="panel-title">
-        <a ui-sref="organizations.view({id:item.id})"   >{{item.name}}</a>
+        <a ui-sref="organizations.view({id:item._id})"   >{{item.name}}</a>
       </div>
       <div class="panel-stage">
 
@@ -24,7 +24,7 @@
             <div class="panel-wrapper">
               <div class="panel-title">Billable Vs Bench</div>
               <div class="panel-stage">
-                <canvas id="tables" class="chart chart-line" data="item.data" labels="item.labels"  legend="true"></canvas>
+                <canvas id="tables" class="chart chart-line" data="chartData.data" labels="chartData.labels"  legend="true"></canvas>
               </div>
             </div>
           </div>
@@ -33,14 +33,7 @@
           <div class="col-xs-12">
             <div class="panel-wrapper">
               <div class="panel-title">Projects</div>
-              <div class="panel-stage">{{getProjectsStr(item.id)}}
-                <div class="row">
-                  <div class="col-xs-4 col-md-4" ng-repeat="project in item.projects">
-
-                    {{project.name}}
-                  </div>
-                </div>
-              </div>
+              <div class="panel-stage">{{getObjectDataStr(item.projects)}}</div>
             </div>
           </div>
         </div>

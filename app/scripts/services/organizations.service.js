@@ -8,90 +8,59 @@ angular.module('dashboardApp')
 
     service.getOrganizationsList = function(success){
       $http.get(service.baseRestUrl+'/api/organizations/').success(function (items) {
-         //console.log(items);
-         //return items;
+        success(items);
+      });
+    }
+    service.getOrganization = function (id, success) {
+      $http.get(service.baseRestUrl+'/api/organizations/'+id).success(function (item) {
+        success(item);
+      });
+    }
+    service.delete = function (organization, success) {
+      $http.delete(service.baseRestUrl+'/api/organizations/' + organization._id, organization).success(function (result) {
+        success(result);
+      });
+    }
+    service.update = function (newOrganization, success) {
+      $http.put(service.baseRestUrl+'/api/organizations/' + newOrganization._id, newOrganization).success(function(items){
+        success(items);
+      });
+    }
+    service.add = function (newOrganization, success) {
+      $http.post(service.baseRestUrl+'/api/organizations/', newOrganization).success(function(items){
         success(items);
       });
     }
 
-
-    service.add = function (organizationData) {
-      this.organizations.push(organizationData);
-    };
-    service.delete = function (organizationData) {
-      var index = this.organizations.indexOf(organizationData);
-      this.organizations.splice(index, 1);
-    };
-    service.clear = function () {
-      for (var index = this.organizations.length - 1; index >= 0; index--) {
-        if (this.organizations[index].completed === true) {
-          this.organizations.splice(index, 1);
-        }
-      }
-    };
-
-    service.getOrganization=function(id){
-      var data = {};
-      angular.forEach(this.organizations, function(items) {
-        if(items.id == id ){
-          data = items;
-        }
+    service.getObjectDataStr = function (objects) {
+      var objectDataList = '';
+      angular.forEach(objects, function(object) {
+        objectDataList += object.name + ", ";
       });
-      return data;
-    };
-
-    service.getProjectsStr = function(id){
-      var projects = this.getProjectsArr(id);
-      var projectsList = '';
-      angular.forEach(projects, function(project) {
-        projectsList += project + ", ";
-      });
-      var pos = projectsList.lastIndexOf(",");
-      projectsList = projectsList.substr(0, pos);
-      return projectsList;
+      var pos = objectDataList.lastIndexOf(",");
+      objectDataList = objectDataList.substr(0, pos);
+      return objectDataList;
     }
 
-    service.getProjectsArr = function(id){
-      var projectsList = [];
-      if(angular.isArray(this.organizations)) {
-        angular.forEach(this.organizations, function (items) {
-          console.log(items);
-          if (items.id == id) {
-            angular.forEach(items, function (item, key) {
-              if (key == 'projects') {
-                angular.forEach(item, function (project) {
-                  projectsList.push(project.name);
-                  console.log(project);
-                });
-              }
-            });
-          }
-        });
-      }else{
-        if (items.id == id) {
-          angular.forEach(items, function (item, key) {
-            if (key == 'projects') {
-              angular.forEach(item, function (project) {
-                projectsList.push(project.name);
-                console.log(project);
-              });
-            }
-          });
-        }
-      }
-      return projectsList;
+    service.chartData = {
+      "labels":["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+      "series":['Series A', 'Series B','Series C', 'Series D'],
+      "data":[
+        [65, 59, 25, 81, 56, 55,45, 59, 45, 31, 65, 48],
+        [28, 48, 35, 19, 35, 27,65, 59, 25, 81, 56, 55],
+        [45, 59, 45, 31, 65, 48,65, 59, 25, 81, 56, 55],
+        [58, 48, 55, 92, 25, 35,28, 48, 35, 19, 35, 27]
+      ]
     }
 
-    service.update=function(newOrganization){
-      var id = newOrganization.id;
-      angular.forEach(this.organizations, function(items) {
-        if(items.id == id){
-          items.name = newOrganization.name;
-          items.projects = newOrganization.projects;
-          items.owners = newOrganization.owners;
-        }
-      });
-    };
+    service.searchOwners = function (term) {
+      return $http.get(service.baseRestUrl+'/api/organizations/owners/' + term)
+    }
+
+    service.searchProject = function (term) {
+      return $http.get(service.baseRestUrl+'/api/organizations/projects/' + term)
+    }
+
 
     //return service
     return service;

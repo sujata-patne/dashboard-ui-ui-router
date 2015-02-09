@@ -44,6 +44,11 @@ angular
         controller:'OrganizationsviewCtrl',
         url:'/view/:id'
       })
+      .state('organizations.add',{
+        templateUrl:'views/organizations.edit.html',
+        controller:'OrganizationseditCtrl',
+        url:'/add/'
+      })
       .state('organizations.edit',{
         templateUrl:'views/organizations.edit.html',
         controller:'OrganizationseditCtrl',
